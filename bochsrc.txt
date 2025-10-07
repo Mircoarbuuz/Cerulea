@@ -1,0 +1,9 @@
+# Bochs configuration for Hello OS
+megs: 32
+romimage: file=/usr/share/bochs/BIOS-bochs-latest
+vgaromimage: file=/usr/share/bochs/VGABIOS-lgpl-latest
+boot: cdrom
+ata0-master: type=cdrom, path=hello.iso, status=inserted
+log: bochsout.txt
+clock: sync=realtime, time0=local
+cpu: count=1, ips=1000000
