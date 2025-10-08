@@ -717,14 +717,25 @@ void cerulefetch(multiboot_info_t* mbi){
         total += mmap->len/1024;
         mmap=(mmap_entry_t*)((uint32_t)mmap + mmap->size + sizeof(mmap->size));
     }
-    
+    const char* logo[] = {
+        "----  ---  ----",
+        "--  ---      --",
+        "--  ---      --",
+        "--  ---      --",
+        "----  ---  ----"
+    };
     // Convert KB to MB for human-readable output
     double total_h = (double)total / (1024.0*1024.0);
     
     kprint_col("Memory: ",0x03); kprint_float(total_h ,0x0F); kprint_col(" KB\n", 0x0A);
-    kprint_col("VERSION: ", 0x0B); kprint("1.0\n");
+    kprint_col("VERSION: ", 0x0B); kprint("1.01\n");
     kprint("Kernel: Cerulea\n");
-    kprint_col("   [C]    \n", 0x0B);
+    for (int i = 0; i < 5; i++)
+    {
+        kprint_col(logo[i],0x0B);
+        kputchar('\n');
+    }
+    
 }
 void mansay(const char* man){ //cowsay part
     if (strlen(man) > 80)
@@ -836,7 +847,7 @@ void prompt(multiboot_info_t* mbi){
                     kprint_col("[Commands:]\n", 0x0D); 
                     kprint("help\nversion | cerulefetch | rm \nerror <arg>\ndir | about | terry\ncls | echo [arg] | open\nsmiley | note\nls | cat [file]\ntouch [filename] | mkdir [dir] \ndf | write [filename] [content]\nmem | cd [dir] \n| name\nmansay [arg] | time\n[executable.crl]\n"); 
                 }
-                else if(strcmp(cmd,"version")==0) kprint("Cerulea 1.0 \n");
+                else if(strcmp(cmd,"version")==0) kprint("Cerulea 1.01 \n");
                 else if(strcmp(cmd,"about")==0) { kprint("Cerulea - hobby OS kernel\n"); }
                 else if(strcmp(cmd,"cls")==0) { cls(); }
                 else if(strcmp(cmd,"echo")==0 && arg) { kprint(arg); kputchar('\n'); }
@@ -1014,14 +1025,14 @@ void start_sysfiles(){
     fs_touch("hello.crl");
     fs_write("hello.crl", "[EXE] Hello, world!");
     fs_touch("aboutsys.crl");
-    fs_write("aboutsys.crl", "[EXE] Cerulea 1.00 - simple hobby OS");
+    fs_write("aboutsys.crl", "[EXE] Cerulea 1.010 - simple hobby OS");
     fs_cd(".."); 
     fs_touch("hello.txt");
     fs_write("hello.txt", "Hello, world");
 }
 void welcome(){
     kprint_col("+-------------------------welcome----------------------------+\n",0x03);
-    kprint_col("| Welcome to Cerulea 1.0                                     |\n",0x03);
+    kprint_col("| Welcome to Cerulea 1.01                                     |\n",0x03);
     kprint_col("+------------------------------------------------------------+\n",0x03);
 }
 // =======================
