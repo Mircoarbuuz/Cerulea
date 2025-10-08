@@ -7,7 +7,13 @@ void delay(uint32_t cycles){
         __asm__ volatile("nop");
     }
 }
-
+const char* logo[] = {
+    "----  ---  ----",
+    "--  ---      --",
+    "--  ---      --",
+    "--  ---      --",
+    "----  ---  ----"
+};
 // DISK CONFIG
 // =======================
 #define DISK_SIZE 65536  // 64 KB virtual disk
@@ -1030,9 +1036,11 @@ void start_sysfiles(){
     fs_write("hello.txt", "Hello, world");
 }
 void welcome(){
-    kprint_col("+-------------------------welcome----------------------------+\n",0x03);
-    kprint_col("| Welcome to Cerulea 1.01                                     |\n",0x03);
-    kprint_col("+------------------------------------------------------------+\n",0x03);
+    for (int i = 0; i < 5; i++)
+    {
+        kprint_col(logo[i], 0x03);
+    }
+    kprint_col("WELCOME TO CERULEA", 0x0B);
 }
 // =======================
 // KERNEL ENTRY
