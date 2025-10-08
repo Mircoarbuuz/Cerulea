@@ -1,0 +1,1 @@
+ gcc -m32 -ffreestanding -nostdlib -nostartfiles -nodefaultlibs -c kernel.c -o kernel.o && ld -m elf_i386 -T linker.ld kernel.o -o kernel.bin && mkdir -p iso/boot/grub && cp kernel.bin iso/boot/ && cp grub.cfg iso/boot/grub/ && grub-mkrescue -o cerulea.iso iso/
