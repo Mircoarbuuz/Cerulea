@@ -764,10 +764,9 @@ void mansay(const char* man){ //cowsay part
 // SHELL (simplified prompt)
 // =======================
 void print_prompt() {
-    kputchar_col(222, 0x03);
-    kprint_col("cer ", 0x03);
+    kprint_col("cer ]", 0x03);
     kprint_col(current_path, 0x0F); // Print the current path
-    kprint_col("] > ", 0x03);
+    kprint_col(" > ", 0x07);
 }
 
 void kscanf(char* buffer, int size) {
