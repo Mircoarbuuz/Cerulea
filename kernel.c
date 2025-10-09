@@ -978,7 +978,24 @@ void prompt(multiboot_info_t* mbi){
                 } else if (strcmp(cmd, "rm")==0 && arg)
                 {
                     fs_rm(arg);
-                } else{
+                } else if (strcmp(cmd, "char")==0)
+                {
+                    kputchar(218);
+                    kputchar(196);
+                    kprint_col("p437", 0xF0);
+                    kputchar(196);
+                    kputchar(191);
+                    kputchar('\n');
+                    kputchar(179);
+                    kputchar(1);
+                    kputchar(2);
+                    kputchar(3);
+                    kputchar(4);
+                    kputchar(12);
+                    kputchar(6);
+                    kputchar(179);
+                    kputchar('\n');
+                } else {
                     size_t cmd_len = strlen(cmd);
                     if (cmd_len > 4 && strcmp(cmd + cmd_len - 4, ".crl") == 0) {
                         fs_run_crl(cmd);
