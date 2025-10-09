@@ -724,11 +724,11 @@ void cerulefetch(multiboot_info_t* mbi){
         mmap=(mmap_entry_t*)((uint32_t)mmap + mmap->size + sizeof(mmap->size));
     }
     const char* logo[] = {
-        "----  ---  ----",
-        "--  ---      --",
-        "--  ---      --",
-        "--  ---      --",
-        "----  ---  ----"
+        "----; ---; ----;",
+        "--; ---;     --;",
+        "--; ---;     --;",
+        "--; ---;     --;",
+        "----; ---; ----;"
     };
     // Convert KB to MB for human-readable output
     double total_h = (double)total / (1024.0*1024.0);
