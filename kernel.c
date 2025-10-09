@@ -1039,6 +1039,7 @@ void welcome(){
     for (int i = 0; i < 5; i++)
     {
         kprint_col(logo[i], 0x03);
+        kputchar('\n');
     }
     kprint_col("WELCOME TO CERULEA", 0x0B);
 }
