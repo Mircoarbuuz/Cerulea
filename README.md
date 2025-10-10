@@ -5,6 +5,6 @@ the cerulea logo is
 [C]
 # TOOLS NEEDED
 - gcc 11.4
-- mtools 2.x
-- grub 2.06
+- mtools
+-  grub 2.06
 - xorriso 1.5.4
